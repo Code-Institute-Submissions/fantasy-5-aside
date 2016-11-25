@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+    <div class="container">
+        <div class="table-responsive table-striped table-bordered table-hover">
+            <table class="table">
+                <tr>
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Team Name</th>
+                    <th>Points</th>
+                </tr>
+
+                    {% for team in teams %}
+                        <tr>
+                            <td>{{ forloop.counter}}</td>
+                            <td>{{ team.owner }}</td>
+                            <td><a href="{% url 'viewprofile' team.id %}">{{ team.name}}</a></td>
+                            <td>{{ team.total_points }}</td>
+                        </tr>
+
+                    {% endfor %}
+            </table>
+        </div>
+    </div>
+
+
+
+{% endblock %}
