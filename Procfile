@@ -1,0 +1,1 @@
+web: gunicorn fantasy-5-aside.wsgi:application
