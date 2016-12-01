@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-
+#from django.views.generic.edit import UpdateView
 from django.db import models
 
 # Create your models here.
@@ -19,7 +19,9 @@ class Team(models.Model):
     def __str__(self):
         return self.name
 
-
+# class TeamUpdate(UpdateView):
+#     model = Team
+#     fields = [ 'defender', 'midfielder1', 'midfielder2', 'striker1', 'striker2']
 
 
 

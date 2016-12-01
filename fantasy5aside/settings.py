@@ -24,10 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DJANGO_DEBUG')
 
-ALLOWED_HOSTS = []
-
+ALLLOWED_HOSTS =['fantasy-5-aside.herokuapp.com', 'localhost']
 
 # Application definition
 
@@ -49,7 +48,8 @@ INSTALLED_APPS = [
     'tinymce',
     'emoticons',
     'disqus',
-    'threads'
+    'threads',
+    'storages',
     #'django_leaderboard',
 ]
 
@@ -90,8 +90,8 @@ WSGI_APPLICATION = 'fantasy5aside.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 CLEARDB_DATABASE_URL = os.getenv("CLEARDB_DATABASE_URL", "")
@@ -140,15 +140,37 @@ AUTHENTICATION_BACKENDS = (
     'accounts.backends.EmailAuth',
 )
 #Stripe enviroment variables
-STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE', 'pk_test_JTBoNtUYzDvlOwjbfRqz7hVg')
-STRIPE_SECRET = os.getenv('STRIPE_SECRET', 'sk_test_5lT8GHUBdXuXS6tAfrpEBzPP')
+STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
+STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 
-STATIC_URL = '/static/'
-STATIC_ROOT = ''
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+
 # tinymce settings
 TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", 'js', 'tinymce', 'tinymce.min.js')
 
+
+AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
+    'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+    'Cache-Control': 'max-age=94608000',
+}
+
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_HOST = 's3-eu-west-1.amazonaws.com'
+
+# STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+   os.path.join(BASE_DIR, "static"),
+)
+
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIAFILES_LOCATION = 'media'
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'

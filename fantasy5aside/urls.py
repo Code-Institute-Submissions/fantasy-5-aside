@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^products/$', all_products),
     url(r'^leaderboard/', get_leaderboard, name='leaderboard'),
     url(r'^createteam/', create_team, name='create_team'),
+    #url(r'^changeteam/', change_team, name='change_team'),
     url(r'^csv/', get_csv),
     url(r'^manage/', get_manage, name='manage'),
     url(r'^downloads/', get_downloads, name='download_scorelist'),
@@ -42,6 +43,4 @@ urlpatterns = [
     url(r'^threads/(?P<subject_id>\d+)/$', forum_views.threads, name='threads'),
     url(r'^new_thread/(?P<subject_id>\d+)/$',  forum_views.new_thread, name='new_thread'),
     url(r'^backup/', get_backup),
-
-
 ]

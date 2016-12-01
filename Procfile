@@ -1,1 +1,1 @@
-web: gunicorn fantasy-5-aside.wsgi:application
+web: gunicorn fantasy5aside.wsgi:application

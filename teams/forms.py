@@ -2,6 +2,7 @@ from django.forms import FileField, CharField, ModelForm
 from teams.models import Team
 
 
+
 class CreateTeamForm(ModelForm):
 
     class Meta:
@@ -15,6 +16,12 @@ class CreateTeamForm(ModelForm):
             instance.save()
 
         return instance
+
+# class TeamUpdate(UpdateView):
+#
+#         model = Team
+#         fields = ['defender', 'midfielder1', 'midfielder2', 'striker1', 'striker2']
+
 
 
 

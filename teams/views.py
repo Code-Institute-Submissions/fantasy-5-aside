@@ -23,12 +23,16 @@ def create_team(request):
 
     return render(request, 'createteam.html', {'form':form})
 
+# def change_team(request):
+#     team = Team.objects.get(owner=request.user)
+#     form = TeamUpdate(owner=request.user)
+#
+#
+#     return render(request, 'changeteam.html', {'form':form}, {'team': team})
+
 @login_required(login_url='/login/')
 def profile(request):
     team = Team.objects.get(owner=request.user)
-
-
-
     return render(request, 'profile.html', {'team': team})
 
 # def change_team(request):
@@ -113,6 +117,9 @@ def update_teams_with_striker(id, goals):
 
 def get_backup(request):
     return render(request, 'backup.html')
+
+def show_team_on_pitch(request, id, full_name):
+    team = Team.objects.get(owner=request.user)
 
 
 
