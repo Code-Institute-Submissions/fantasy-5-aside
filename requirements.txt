@@ -1,6 +1,7 @@
 arrow==0.8.0
 boto==2.43.0
 chardet==2.3.0
+disqus==0.0.4
 dj-database-url==0.4.1
 Django==1.10.3
 django-csvimport==2.5
@@ -19,4 +20,3 @@ six==1.10.0
 sqlparse==0.2.2
 stripe==1.41.1
 wheel==0.24.0
-MySQL-python==1.2.5
