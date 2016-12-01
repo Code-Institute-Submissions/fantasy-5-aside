@@ -1,1 +1,1 @@
-web: gunicorn fantasy5asidpip intalle.wsgi:application
+web: gunicorn fantasy5aside.wsgi:application
