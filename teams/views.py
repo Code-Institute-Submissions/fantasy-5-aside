@@ -15,6 +15,7 @@ def create_team(request):
 
         if form.is_valid():
             team = form.save(commit=False)
+
             team.owner = request.user
             team.save()
             return redirect(profile)

@@ -19,7 +19,7 @@ def register(request):
 
             if user:
                 messages.success(request, "You have successfully registered")
-                return redirect(reverse('profile'))
+                return redirect(reverse('create_team'))
 
             else:
                 messages.error(request, "unable to log you in at this time")
