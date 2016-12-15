@@ -17,10 +17,19 @@ class CreateTeamForm(ModelForm):
 
         return instance
 
-# class TeamUpdate(UpdateView):
-#
-#         model = Team
-#         fields = ['defender', 'midfielder1', 'midfielder2', 'striker1', 'striker2']
+class TeamUpdate(ModelForm):
+
+    class Meta:
+        model = Team
+        fields = ['defender', 'midfielder1', 'midfielder2', 'striker1', 'striker2']
+
+        def save(self, commit=True):
+            instance = super(TeamUpdate, self).save(commit=False)
+
+            if commit:
+                instance.save()
+
+            return instance
 
 
 

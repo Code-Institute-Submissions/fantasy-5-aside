@@ -18,7 +18,7 @@ from django.contrib import admin
 from home.views import get_index, get_about, get_manage, get_nav
 from accounts.views import register, login, logout, get_csv
 from products.views import all_products
-from teams.views import get_leaderboard, profile, create_team, get_viewprofile, get_downloads, upload_csv, get_backup
+from teams.views import get_leaderboard, profile, create_team, get_viewprofile, get_downloads, upload_csv, get_backup, change_team
 from threads import views as forum_views
 
 urlpatterns = [
@@ -32,7 +32,7 @@ urlpatterns = [
     url(r'^products/$', all_products),
     url(r'^leaderboard/', get_leaderboard, name='leaderboard'),
     url(r'^createteam/', create_team, name='create_team'),
-    #url(r'^changeteam/', change_team, name='change_team'),
+    url(r'^changeteam/', change_team, name='change_team'),
     url(r'^csv/', get_csv),
     url(r'^manage/', get_manage, name='manage'),
     url(r'^downloads/', get_downloads, name='download_scorelist'),

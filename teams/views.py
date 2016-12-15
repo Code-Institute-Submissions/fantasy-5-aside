@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Team
-from .forms import CreateTeamForm
+from .forms import CreateTeamForm, TeamUpdate
 from django.contrib.auth.decorators import login_required
 import csv
 from django.http import HttpResponse, HttpResponseRedirect
@@ -9,13 +9,13 @@ from players.models import Defender, Midfielder, Striker
 
 # Create your views here
 
+@login_required(login_url='/login/')
 def create_team(request):
     if request.method == "POST":
         form = CreateTeamForm(request.POST)
 
         if form.is_valid():
             team = form.save(commit=False)
-
             team.owner = request.user
             team.save()
             return redirect(profile)
@@ -24,12 +24,20 @@ def create_team(request):
 
     return render(request, 'createteam.html', {'form':form})
 
-# def change_team(request):
-#     team = Team.objects.get(owner=request.user)
-#     form = TeamUpdate(owner=request.user)
-#
-#
-#     return render(request, 'changeteam.html', {'form':form}, {'team': team})
+def change_team(request):
+    instance = Team.objects.get(owner=request.user)
+    if request.method == "POST":
+        form = TeamUpdate(request.POST, instance=instance)
+
+        if form.is_valid():
+            team = form.save(commit=False)
+            team.owner = request.user
+            team.save()
+            return redirect(profile)
+    else:
+        form =  TeamUpdate(instance=instance)
+
+    return render(request, 'changeteam.html', {'form':form})
 
 @login_required(login_url='/login/')
 def profile(request):
