@@ -6,8 +6,6 @@ from django.http import HttpResponse
 def get_index(request):
     return render(request, 'index.html')
 
-def get_about(request):
-    return render(request, 'about.html')
 
 @login_required
 def get_manage(request):

@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
 
@@ -50,19 +50,19 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
                 <ul class="nav nav-pills pull-right">
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'index' %}"><i class="fa fa-home"></i> Home</a></li>
+
                     <li><a href="#">Contact</a></li>
                     {% if user.is_authenticated %}
-                        <li><a href="{% url 'profile' %}">Profile</a></li>
-                        <li><a href="{% url 'leaderboard' %}">Leaderboard</a></li>
-                        <li><a href="{% url 'logout' %}">Log Out</a></li>
+                        <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a></li>
+                        <li><a href="{% url 'leaderboard' %}"><i class="fa fa-table"></i> Leaderboard</a></li>
+                        <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
                     {% else %}
-                        <li><a href="{% url 'register' %}">Register</a></li>
-                        <li><a href="{% url 'login' %}">Log In</a></li>
+                        <li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i> Register</a></li>
+                        <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Log In</a></li>
                     {% endif %}
                     {% if user.is_superuser %}
-                        <li><a href="{% url 'manage' %}">Manage</a></li>
+                        <li><a href="{% url 'manage' %}"><i class="fa-unlock-alt"></i>  Manage</a></li>
                     {% endif %}
                 </ul>
 
@@ -84,19 +84,19 @@
                         <p class="intro-text" id="opacity">Where Goals are all that matters</p>
                         {% if user.is_authenticated %}
                             <a href="{% url 'profile' %}">
-                                <button type="button" class="index-buttons btn btn-primary btn-lg">Profile</button>
+                                <button type="button" class="index-buttons btn btn-primary btn-lg"><i class="fa fa-user"></i> Profile</button>
                             </a>
                             <a href="{% url 'leaderboard' %}">
-                                <button type="button" class="index-buttons btn btn-primary btn-lg">Leaderboard
+                                <button type="button" class="index-buttons btn btn-primary btn-lg"><i class="fa fa-table"></i> Leaderboard
                                 </button>
                             </a>
                         {% else %}
 
                             <a href="{% url 'register' %}">
-                                <button type="button" class="index-buttons btn btn-primary btn-lg">Register</button>
+                                <button type="button" class="index-buttons btn btn-primary btn-lg"><i class="fa fa-user-plus"></i> Register</button>
                             </a>
                             <a href="{% url 'login' %}">
-                                <button type="button" class="index-buttons btn btn-primary btn-lg">Log In</button>
+                                <button type="button" class="index-buttons btn btn-primary btn-lg"><i class="fa fa-sign-in"></i> Log In</button>
                             </a>
                         {% endif %}
                     </div>
