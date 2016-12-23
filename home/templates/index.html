@@ -52,7 +52,7 @@
                 <ul class="nav nav-pills pull-right">
                     <li><a href="{% url 'index' %}"><i class="fa fa-home"></i> Home</a></li>
 
-                    <li><a href="#">Contact</a></li>
+
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a></li>
                         <li><a href="{% url 'leaderboard' %}"><i class="fa fa-table"></i> Leaderboard</a></li>

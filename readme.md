@@ -1,6 +1,6 @@
 #Fantasy5Aside
 
-A simple fabtasy Football site for those who enjoy keeping track of football without spending hours a week on their teams. This game let the user pick 5 players for their team. The team scores points by the players scoring goals in that game week. The goals are weighted by the position of the scorer.
+A simple fantasy football site for those who enjoy keeping track of football without spending hours a week on their teams. This game let the user pick 5 players for their team. The team scores points by the players scoring goals in that game week. The goals are weighted by the position of the scorer.
 
 ##Technology Used:
 * Html
